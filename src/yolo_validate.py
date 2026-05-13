@@ -7,9 +7,9 @@ import seaborn as sns
 from ultralytics import YOLO
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 
-MODEL_PATH = "runs/classify/train32/weights/best.pt"            # cesta k modelu
-DATASET_PATH = "dataset/dataset_full/val"                       # priečinok s testovacími dátami
-OUTPUT_DIR = "predictions/output_yolo11l_full_fixed/val"        # kam sa uložia výsledky
+MODEL_PATH = "models/full/best.pt"          # cesta k modelu  (pre štvrtinovú vzorku: models/quater/best.pt)
+DATASET_PATH = "dataset/dataset_full"       # dataset         (pre štvrtinovú vzorku: dataset/dataset_quater/val)
+OUTPUT_DIR = "predictions/output"           # kam sa uložia výsledky
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 model = YOLO(MODEL_PATH)
@@ -85,6 +85,6 @@ sns.heatmap(cm, annot=True, fmt="d", cmap="Blues",
             yticklabels=classes)
 plt.xlabel("Predikovaná trieda")
 plt.ylabel("Skutočná trieda")
-plt.title("Confusion Matrix – Testovacia množina")
+plt.title("Confusion Matrix")
 plt.tight_layout()
 plt.show()

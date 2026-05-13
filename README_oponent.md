@@ -2,6 +2,8 @@
 
 Tento návod slúži na jednoduché vyskúšanie dvoch skriptov: `yolo_validate.py` a `yolo_predict.py`.
 
+Kompletný návod sa nachádza v Použivateľskej príručke v dodatkoch práce.
+
 > **Vzorka datasetu a natrénované modely sú odovzdané v AIS.**
 
 ---

@@ -51,8 +51,16 @@ Rozbaľte stiahnutý archív z AIS priamo do koreňového priečinka repozitára
 │   ├── full/best.pt
 │   └── quater/best.pt
 └── dataset/
-    ├── dataset_full/val/
-    └── dataset_quater/val/
+    ├── dataset_full/
+        ├── encrypted_text/
+        ├── plain_text/
+        ├── keys/
+        └── mixed/
+    └── dataset_quater/
+        ├── encrypted_text/
+        ├── plain_text/
+        ├── keys/
+        └── mixed/
 ```
 
 ---
@@ -70,12 +78,23 @@ python yolo_validate.py
 
 ### Predikcia na obrázkoch (`yolo_predict.py`)
 
-Spustí predikciu a uloží výsledky do `runs/predict/`.
+Spustí predikciu a uloží anotované obrázky do `runs/predict/`.
+
+Pred spustením nastavte v súbore `src/yolo_predict.py` premennú `SOURCE` na priečinok s obrázkami, ktoré chcete predikovať:
+
+```python
+# príklady:
+SOURCE = "dataset/dataset_full/encrypted_text"  # iba šifrovaný text
+SOURCE = "dataset/dataset_full/keys"            # iba kľúče
+SOURCE = "dataset/dataset_full/plain_text"      # iba čitateľný text
+SOURCE = "dataset/dataset_full/mixed"           # iba zmiešaný obsah
+```
+
+> Ak chcete predikovať všetky obrázky naraz, skopírujte ich do jedného priečinka (napr. `dataset/predict/`) a nastavte `SOURCE` na tento priečinok.
 
 ```bash
 cd src
 python yolo_predict.py
 ```
 
-> Pre štvrtinový model zmeňte v skriptoch `models/full/best.pt` → `models/quater/best.pt`
-> a `dataset/dataset_full/val` → `dataset/dataset_quater/val`.
+> Pre štvrtinový model zmeňte `models/full/best.pt` → `models/quater/best.pt`.

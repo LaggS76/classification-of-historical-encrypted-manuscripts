@@ -2,9 +2,6 @@
 
 Táto príručka popisuje postup inštalácie a spustenia skriptov elektronickej prílohy.
 
-Zdrojové kódy sú dostupné na:  
-https://github.com/<user>/<repo>
-
 ---
 
 ## 1. Požiadavky
